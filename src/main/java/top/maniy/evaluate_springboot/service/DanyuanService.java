@@ -12,4 +12,6 @@ import java.util.List;
  */
 public interface DanyuanService {
     List<Danyuan> findByParentCode(String code);
+
+    List<Danyuan> findByParentCodeIsNull();
 }

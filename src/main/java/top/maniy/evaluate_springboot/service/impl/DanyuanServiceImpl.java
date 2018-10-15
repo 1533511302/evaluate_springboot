@@ -25,4 +25,9 @@ public class DanyuanServiceImpl implements DanyuanService {
     public List<Danyuan> findByParentCode(String code) {
         return danyuanRepository.findByParentCode(code);
     }
+
+    @Override
+    public List<Danyuan> findByParentCodeIsNull() {
+        return danyuanRepository.findByParentCodeIsNull();
+    }
 }

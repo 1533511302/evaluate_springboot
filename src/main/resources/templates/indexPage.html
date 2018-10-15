@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <meta name="viewport" content="width=device-width,user-scalable=no,initial-scale=1,maximum-scale=1,minimum-scale=1">
+    <link rel="stylesheet" href="bootstrap-3.3.7-dist/css/bootstrap.css">
+    <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.js"></script>
+    <link rel="stylesheet" href="css/wenjuan.css">
+</head>
+<script type="text/javascript">
+
+    $.post("danYuan/findCity",null,function (data) {
+        $.each(data,function (i,city) {
+            $("#form-control1").append("<option value='"+city.code+"'>"+city.name+"</option>");
+
+        });
+    },'json')
+
+    function changeCity(code) {
+        console.log(code)
+        $.post("danYuan/findByParentCode",{parentCode:code},function (data) {
+            //$("#form-control2").empty();
+            $("#form-control2 option:not(:first)").remove();
+            $.each(data,function (i,pinpai) {
+                $("#form-control2").append("<option value='"+pinpai.code+"'>"+pinpai.name+"</option>");
+                //var $option =$("#form-control2").append("<option></option>");
+                //$option.text(pinpai.name);
+                //$option.value(pinpai.code);
+                //console.log(option);
+            });
+
+        },"json");
+
+    }
+    function changePinpai(code) {
+        $.post("danYuan/findByParentCode",{parentCode:code},function (data) {
+            $("#form-control3 option:not(:first)").remove();
+            $.each(data,function (i,pinpai) {
+                $("#form-control3").append("<option value='"+pinpai.code+"'>"+pinpai.name+"</option>");
+
+            });
+
+        },"json");
+
+    }
+    function changeGuiWen(code) {
+        console.log(code);
+        $.post("renYuan/findByDanYuanCode",{renYuanCode:code},function (data) {
+            $("#form-control4 option:selected").remove();
+
+            $.each(data,function (i,guwei) {
+                $("#form-control4").append("<option value='"+guwei.code+"'>"+guwei.name+"</option>");
+
+            });
+
+        },"json");
+    }
+</script>
+<body>
+<div class="logo">
+    <!-- 魔方 -->
+    <div class="scene">
+        <div class="cube rotating">
+            <div class="cube-face front">问卷</div>
+            <div class="cube-face inner-faces inner-face"></div>
+            <div class="cube-face inner-faces inner-face2"></div>
+            <div class="cube-face inner-faces inner-face3"></div>
+            <div class="cube-face back">调查</div>
+            <div class="cube-face left">问卷</div>
+            <div class="cube-face right">调查</div>
+            <div class="cube-face top">问卷</div>
+            <div class="cube-face bottom">调查</div>
+        </div>
+    </div>
+</div>
+
+<form action="">
+    <select class="form-control" id="form-control1" onchange="changeCity(this.value)">
+        <option>选择您所在的城市</option>
+    </select>
+    <select class="form-control" id="form-control2" onchange="changePinpai(this.value)">
+        <option>选择您的购买品牌</option>
+
+    </select>
+    <select class="form-control" id="form-control3" onchange="changeGuiWen(this.value)">
+        <option>选择柜台</option>
+
+    </select>
+    <select class="form-control" id="form-control4">
+        <option>选择专柜顾问</option>
+
+    </select>
+    <div class="form-news">请对您提供服务的顾问进行评价</div>
+    <div class="form-btn">
+        <span class="form-btn-1">满意</span>
+        <span class="form-btn-2">不满意</span>
+    </div>
+    <div class="form-sub">
+        <button>提交</button>
+    </div>
+</form>
+
+<!-- <script type="text/javascript" src="bootstrap-3.3.7-dist/js/bootstrap.js"></script> -->
+
+<script src="js/wenjuan.js"></script>
+</body>
+</html>

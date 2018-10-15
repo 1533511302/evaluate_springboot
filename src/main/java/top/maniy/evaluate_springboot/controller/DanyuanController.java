@@ -17,15 +17,27 @@ import java.util.List;
  * @date 2018/10/14 23:02
  */
 @Controller
-@RequestMapping("/danyuan")
+
 public class DanyuanController {
 
     @Autowired
     private DanyuanService danyuanService;
 
-    @RequestMapping("/findByParentCode")
+    @RequestMapping("/")
+    public String index(){
+        return "/indexPage";
+    }
+
+    @RequestMapping("/danYuan/findByParentCode")
     @ResponseBody
-    public List<Danyuan> findByParentCode(@RequestParam("parentCode") String parentCode){
-        return danyuanService.findByParentCode(parentCode);
+    public List<Danyuan> findByParentCode(String flag,@RequestParam(value = "parentCode") String parentCode){
+
+     return danyuanService.findByParentCode(parentCode);
+    }
+    @RequestMapping("/danYuan/findCity")
+    @ResponseBody
+    public List<Danyuan> findCity(){
+
+        return danyuanService.findByParentCodeIsNull();
     }
 }

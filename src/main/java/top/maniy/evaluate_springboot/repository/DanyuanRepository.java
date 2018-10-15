@@ -12,8 +12,8 @@ import java.util.List;
  * @date 2018/10/14 22:48
  */
 public interface DanyuanRepository extends JpaRepository<Danyuan,Integer> {
-
+    //根据parentCode查询danyuan集合
     List<Danyuan> findByParentCode(String code);
-
-
+    //查询parentCode为null的danyuan集合
+    List<Danyuan> findByParentCodeIsNull();
 }
