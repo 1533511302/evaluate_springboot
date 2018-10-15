@@ -14,4 +14,6 @@ import java.util.List;
 public interface DanyuanRepository extends JpaRepository<Danyuan,Integer> {
 
     List<Danyuan> findByParentCode(String code);
+
+
 }

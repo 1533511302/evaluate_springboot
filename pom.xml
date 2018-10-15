@@ -95,6 +95,9 @@
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
+				<configuration>
+					<mainClass>top.maniy.evaluate_springboot.EvaluateSpringbootApplication</mainClass>
+				</configuration>
 			</plugin>
 		</plugins>
 	</build>

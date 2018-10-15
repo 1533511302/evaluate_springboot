@@ -1,28 +1,37 @@
 package top.maniy.evaluate_springboot.entity;
 
+
+import javax.persistence.*;
+
 /**
  * @author liuzonghua
  * @Package top.maniy.entity
  * @Description:
  * @date 2018/9/13 9:09
  */
+
+@Entity
+@Table(name = "danyuan")
 public class Danyuan {
-    private int danYuanId;
-
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name="danyuan_id")
+    private Integer danyuanId;
+    @Column(name="name")
     private String name;
-
-    private String diZhi;
-
+    @Column(name="dizhi")
+    private String dizhi;
+    @Column(name="code")
     private String code;
-
+    @Column(name="parent_code")
     private String parentCode;
 
-    public int getDanYuanId() {
-        return danYuanId;
+    public Integer getDanyuanId() {
+        return danyuanId;
     }
 
-    public void setDanYuanId(int danYuanId) {
-        this.danYuanId = danYuanId;
+    public void setDanyuanId(Integer danyuanId) {
+        this.danyuanId = danyuanId;
     }
 
     public String getName() {
@@ -33,12 +42,12 @@ public class Danyuan {
         this.name = name;
     }
 
-    public String getDiZhi() {
-        return diZhi;
+    public String getDizhi() {
+        return dizhi;
     }
 
-    public void setDiZhi(String diZhi) {
-        this.diZhi = diZhi;
+    public void setDizhi(String dizhi) {
+        this.dizhi = dizhi;
     }
 
     public String getCode() {
@@ -55,16 +64,5 @@ public class Danyuan {
 
     public void setParentCode(String parentCode) {
         this.parentCode = parentCode;
-    }
-
-    @Override
-    public String toString() {
-        return "Danyuan{" +
-                "danYuanId=" + danYuanId +
-                ", name='" + name + '\'' +
-                ", diZhi='" + diZhi + '\'' +
-                ", code='" + code + '\'' +
-                ", parentCode='" + parentCode + '\'' +
-                '}';
     }
 }

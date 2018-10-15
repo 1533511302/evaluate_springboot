@@ -20,6 +20,7 @@ public class DanyuanServiceImpl implements DanyuanService {
 
    @Autowired
    private DanyuanRepository danyuanRepository;
+
     @Override
     public List<Danyuan> findByParentCode(String code) {
         return danyuanRepository.findByParentCode(code);

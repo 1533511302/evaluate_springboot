@@ -17,7 +17,7 @@ import java.util.List;
  * @date 2018/10/14 23:02
  */
 @Controller
-@RequestMapping("danyuan")
+@RequestMapping("/danyuan")
 public class DanyuanController {
 
     @Autowired
